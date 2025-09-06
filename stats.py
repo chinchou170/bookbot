@@ -21,3 +21,15 @@ def count_characters(lower_text: str) -> dict:
 def sort_by_frequency(frequency: dict):
     sorted_frequency = sorted(frequency.items(), key=lambda x: x[1], reverse=True)
     return sorted_frequency
+
+def chars_to_dicts(freq: dict) -> list[dict]:
+    items = []
+    for ch, n in freq.items():
+        if ch.isalpha():
+            items.append({"char": ch, "num": n})
+
+    def sort_on(d: dict) -> int:
+        return d["num"]
+
+    items.sort(key=sort_on, reverse=True)
+    return items
